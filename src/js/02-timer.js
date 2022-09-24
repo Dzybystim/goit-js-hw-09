@@ -28,17 +28,17 @@ buttonStartElement.style.background = "#ABA8B2";
 
 timerElement.style.display = "flex";
 
-fieldElement.forEach(function callback(element){
+fieldElement.forEach(element => {
   element.style.padding = "10px";
 });
 
-labelElement.forEach(function callback(element){
+labelElement.forEach(element => {
   element.style.display = "block";
   element.style.textAlign = "center";
   element.style.fontSize = "12px"
 })
 
-valueElement.forEach(function callback(element){
+valueElement.forEach(element => {
   element.style.display = "block"
   element.style.textAlign = "center";
   element.style.fontWeight = "bold";

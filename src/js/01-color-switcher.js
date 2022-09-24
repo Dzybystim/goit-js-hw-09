@@ -8,18 +8,18 @@ function getRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   }
 
- let change = null;
+ let intervalId = null;
  
+ buttonStopElement.disabled = "true";
 
 function colorChange(event) {
     event.preventDefault();
     
-    buttonStopElement.removeAttribute('disabled');
-    buttonStartElement.disabled = "true";
+    stopActive()
 
     bodyElement.style.backgroundColor = getRandomHexColor();
 
-    change = setInterval(() => {
+    intervalId = setInterval(() => {
         bodyElement.style.backgroundColor = getRandomHexColor();
     }, 1000)
 
@@ -28,11 +28,23 @@ function colorChange(event) {
   function stopColorChange(event) {
     event.preventDefault();
 
-    buttonStartElement.removeAttribute('disabled');
-    buttonStopElement.disabled = "true";
+    startActive()
 
-    clearInterval(change);
+    clearInterval(intervalId);
   }
+
+
+  function stopActive() {
+    buttonStopElement.removeAttribute('disabled');
+    buttonStartElement.disabled = "true";
+  }
+
+  function startActive() {
+    buttonStartElement.removeAttribute('disabled');
+    buttonStopElement.disabled = "true";  
+  }
+
+
 
   buttonStartElement.addEventListener('click', colorChange);
   buttonStopElement.addEventListener('click', stopColorChange);
